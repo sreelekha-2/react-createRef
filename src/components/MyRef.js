@@ -1,18 +1,18 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 export default function MyRef() {
-  const [inputValue, setInputValue] = useState('');
-  const inputRef = React.createRef();
+  const inputEle = useRef();
 
   const handler = () => {
-    console.log(inputRef.current);
-    inputRef.current.focus();
+    console.log(inputEle.current);
+    inputEle.current.focus();
+    inputEle.current.style.backgroundColor = 'red';
   };
 
   return (
     <>
-      <input type="text" ref={inputRef} />
+      <input type="text" ref={inputEle} />
       <button onClick={handler}>Click Me</button>
     </>
   );
